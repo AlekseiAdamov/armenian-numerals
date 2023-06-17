@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Армянские числительные</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .flashcard {
+            width: 300px;
+            height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 20px auto;
+            padding: 20px;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .flashcard:hover {
+            transform: scale(1.10);
+        }
+
+        .flashcard .front {
+            font-size: 24px;
+        }
+
+        .flashcard .back {
+            display: none;
+            font-size: 18px;
+            color: #888;
+        }
+
+        .flashcard.show-back .front {
+            display: none;
+        }
+
+        .flashcard.show-back .back {
+            display: block;
+        }
+
+        .settings {
+            margin: 20px auto;
+        }
+    </style>
+    <link rel="icon" type="image/x-icon"
+        href="data:image/x-icon;base64,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+P/Zx+z/p3zT/2IUsP9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/djG6/5JbyP9vJ7f/5tny///////38/v/qH3T/4RGwf+MU8b/rYXW/3s4vP9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/fDq9/93M7v+thNb/XxCv/4RHwf///////////4VIwv9VAKr/VQCq/1UAqv9VAKr/ezq9/6yC1f+sgtX/cCi3/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/45Wx//8+v3/l2TL/1UAqv9VAKr/mGXL///////j1fH/VQCq/1UAqv9VAKr/VQCq/5BYx//69/z////////////7+f3/lF7J/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9rIbX/+fb8/+TW8f9VAKr/VQCq/1UAqv+PWMf//////8Wp4v9VAKr/VQCq/1UAqv98O77//Pr9///////z7vn/y7Ll/93M7v/9/P7/fz+//1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/6V50v//////073p/1UAqv9VAKr/VQCq/3IruP//////w6Th/1UAqv9VAKr/WAWs/+XY8v//////u5rd/10Mrv9VAKr/VQCq/5FayP/dze7/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/pXjS///////38/v/YRKw/1UAqv9VAKr/VQGq/+3k9v/NtOb/VQCq/1UAqv+YZMv//////7ON2f9VAKr/VQCq/1UAqv9VAKr/VQCq/6p/1P93Mrv/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3k2vP96OLz/+PT7///////DpuH/VQGq/1UAqv9VAKr/sovY/+HS8P9VAKr/VQCq/+LU8P/KsOT/VgGq/1UAqv9VAKr/VQCq/1UAqv9VAKr/Xg6u/49Yx/9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9fD6//sYvY/1UAqv+JT8T/+vf8//////+6mNz/VwOr/1UAqv9sIrX/+PT7/1gFq/93M7v/6+H1/2AQr/9VAKr/VQCq/1cDq/95Nbz/lmLK/55uz/+KUMT/biW2/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/6Fy0P+UXsn/VQCq/1UAqv93M7v/4NHw///////QuOf/YhSw/1UAqv++nt7/eDS7/6qA1P+GScL/VQCq/3IruP+5ltz/8uv4///////////////////////p3/T/ayG1/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/073p/4tSxf9VAKr/VQCq/1UAqv9XA6v/k13J/97O7v/u5vf/jFLF/2UYsv+bas3/oXLQ/2oftP/FqeL/9O75/9rH7P/GqeL/vJrd/76e3//cyu3//v7////////EpuH/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv/q3/T/sIjX/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3Mtuf+me9P/pHfR/4pQxP+JTsT/l2TL/3EquP9WAar/VQCq/1UAqv9VAKr/VQCq/1UAqv9+Pr//9fD6/+vi9f9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/+TX8f/69/z/ilHF/1UAqv9VAKr/VQCq/1UAqv9VAKr/WASr/3c0u/+cas3/jFTF/4tRxf+hc9D/sInY/308vv9WAar/VQCq/1UAqv9VAKr/VQCq/1UAqv+ne9P/7+f3/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/upjc////////////5dny/8er4//DpuH/zbTm/+HS8P/39Pv/waHg/2cbs/+jdtH/l2PL/2witf+AQL//59vz/+jc8/+fb87/Wgit/1UAqv9VAKr/VQCq/4VIwv/Xw+v/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9kF7L/4dLw///////////////////////t5fb/s47Z/20ltv9VAKr/hUjC/66F1v9wKbf/yK3j/1UA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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAADAAAABgAAAAAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABVAKoPVgCpXFUAqsZVAKr2VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr2VQCqxlYAqVxVAKoPAAAAAFUAqg9UAKmVVACq+FUAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1QAqvhUAKmVVQCqD1YAqVxUAKr4VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9UAKr4VgCpXFUAqsZVAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCqxlUAqvZVAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq9lUAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/YBCv/4lPxP/GqOL/49bx/+rg9P/Zx+z/t5Pb/4NFwf9lF7L/VgKr/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9oHLP/wqTh//38/v////////////v6/f/j1fH/18Tr/9rI7P/LseX/mWbM/1oIrP9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VgGq/34+vv+uhdb/upjc/4tRxf+thNb/+/r9////////////6t70/4ZKwv9oHbT/ZBey/2Yas/9wKLf/mGXL/62E1f9cCq3/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1wKrv+KUMX/38/v/+TX8v+aZsz/Wwmt/2MUsf/SvOn////////////o3fT/cSq4/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/2MVsf9/QL//fz+//38/v/9qILT/WQes/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/ZRiy/7mW3P/07vn/xaji/24mtv9VAKr/VQCq/2oftP/o3PP///////z7/v+sgtX/WAWs/1UAqv9VAKr/VQCq/1UAqv9VAKr/ZBax/62F1v/n3PP//v3+//79/v/p3fT/sYnY/2YZsv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9iFLH/zrbm//38/v/SvOn/aB2z/1UAqv9VAKr/VQCq/2witf/u5fb///////Pt+f+GSsL/VQCq/1UAqv9VAKr/VQCq/1UAqv9lGLL/z7jn//z7/v///////////////////////fz+/9O86f9pHbT/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1gFrP+rgNX//Pr9//n1/P+XZMv/VQCq/1UAqv9VAKr/VQCq/2oftP/o3PP//////+zj9v9zLbn/VQCq/1UAqv9VAKr/VQCq/1wLrv+5ltz//fz+////////////+fX8/+/n9//u5fb/9/L7//79/v++nd7/XQyu/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/2gds//j1fH///////Dp+P9+Pr7/VQCq/1UAqv9VAKr/VQCq/2QXsv/Yxev//////+rg9f9tJLb/VQCq/1UAqv9VAKr/VQCq/49Xx//28fr///////z6/f/Tvun/mWfM/3k3vP93M7v/kVrI/8yz5v/07/n/jFTF/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3Yxuv/9/P7///////Hq+P+BQsD/VQCq/1UAqv9VAKr/VQCq/1wLrv/AoeD//////+vh9f9vJrf/VQCq/1UAqv9VAKr/Xw+v/+vh9f///////////7iV2/9kF7H/VgGq/1UAqv9VAKr/VQCq/2UYsv/AoN//4NLw/1YBq/9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3Ywuv/9+/7///////v5/f+hctD/VgKr/1UAqv9VAKr/VQCq/1UBqv+hctD//Pr9/+3l9v91Mbr/VQCq/1UAqv9WAqv/rIPW///////69/z/s43Z/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9rIbX/4tTx/4BBwP9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/Wgis/4BAv//h0vD////////////ayOz/aR60/1UAqv9VAKr/VQCq/1UAqv98O73/8Oj3//Hq+P+BQsD/VQCq/1UAqv9sIrX/59vz//z6/f+8mt3/Xw+v/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/lWDK/66E1v9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9ZBaz/rYXW/2Yasv+metL/+/n9///////9/P7/xKbh/1YDq/9VAKr/VQCq/1UAqv9aB6z/18Pr//by+/+QWcf/VQCq/1UAqv+ZZcz/+fb8/93M7v9nG7P/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/Wgit/7SO2f9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1YCq/+TXsn/oXPQ/1UAqv9fEK//yK3k//z7/v///////////76e3v9hErD/VQCq/1UAqv9VAKr/jlbH//v5/f+jddH/VQGq/10Mrv/CpOD/8+35/3Mtuf9VAKr/VQCq/1UAqv9VAKr/VgKr/18Pr/9nG7P/bCO1/24lt/9sIrX/ZRiy/4ZJw/9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/2MUsf/Kr+T/dTC6/1UAqv9VAKr/YRKw/7KM2P/z7fn///////v5/f/CpOD/ayG1/1UAqv9VAKr/Wges/9jF6/+5ltz/Wgit/2kftP/g0fD/mWXM/1UAqv9VAKr/VQCq/10Nrv+DRcH/qH3U/8er4//fz+//7+f3//Tv+v/u5fb/2cbs/7GK2P9rIbX/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3s5vf/g0O//aR20/1UAqv9VAKr/VQCq/1sIrf+ITcT/5dny///////8+/7/4tTw/3o3vP9VAKr/VQCq/4JDwf/Nteb/YxWx/4FCwP/Hq+P/YBGw/1UAqv9dDK7/mmfM/97O7//y7Pj//fz+//////////////////////////////////z7/v/HrOP/YRKw/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/6yC1f/fz+//Zxuz/1UAqv9VAKr/VQCq/1UAqv9VAKr/Wwmt/6V40v/k1/H/+PT7//bx+v+fb8//YxSx/14Nrv+zjtn/bia3/6Fxz/+ITMP/YBGw/4pQxP/g0e//+vf8//Tu+f/v5/f/6+H1/+ne9P/o3fP/6uD1//Hp+P/7+f3////////////+/f7/jFPF/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/8625v/r4fX/ayG1/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1YBqv9pHrT/lWDK/76e3v/ezu//zLLl/41Uxv+CRMD/hUjC/6Bxz/+GScL/tZDa/8qv5P+yjNn/nGrN/4lOxP96N7z/bia3/2gcs/9mGbL/bCO1/38/v/+kd9L/49Xx////////////x6vj/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/97O7v/9/P7/kVrI/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1wKrf9oHbT/fDu9/55tzv+gcdD/jVPF/4pPxP9+Pb7/ayG1/2ESsP9YBaz/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9XA6v/bCO2/+XX8f//////49bx/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/9jF6///////8On3/3Yzu/9ZBqz/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9aCK3/YxWx/24mt/+FSML/kFjH/4xTxf+kd9H/qn/U/4xRxf9sI7b/Xw+v/1YBqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/4NFwf/7+f3/6Nzz/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/7mX3P///////////+zj9v+vh9f/iU3E/3Uwuv9uJbb/bye3/3Yxuv+BQsD/kFjI/6J00f+4ltz/zrXm/7aR2v+CRMD/pHfR/349v/+GScL/gkPA/8Kj4P/k1/H/ya7k/59vz/9xKrj/VwOr/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/2kdtP/k1/H/18Lr/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/39AwP/6+P3////////////9/P7/9O75/+3k9v/r4fX/6+H1/+3l9v/x6/j/9vL7//v5/f/bye3/hUjC/18Pr/+GSsP/pnrS/2shtf+3k9v/YRKw/14Nrv+RWcj/8Oj3//v5/f/r4fX/t5Pb/2QXsv9VAKr/VQCq/1UAqv9VAKr/VQCq/2UYsv/Zxuz/sozZ/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/14Nrv+6mN3/+vj9//////////////////////////////////z6/f/w6Pj/2cbr/5FbyP9bCK3/VQCq/2AQr//HquP/h0rC/2ARsP/Jr+T/jlXG/1UAqv9VAKr/bCK1/9fD6//7+f3///////Dp+P+XY8v/Xg6v/1UAqv9VAKr/VQCq/2cbs//cy+3/fz+//1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9kF7L/qH3U/8+35//l2PL/7OP2/+fc8//YxOv/waHg/6J00P99PL7/Wwmt/1UAqv9VAKr/VQCq/5djy//j1vH/ayG1/1gFrP+yi9j/49Xx/18Pr/9VAKr/VQCq/2MWsf+1kdr/+fb8///////49fv/v5/f/2ketP9VAKr/VQCq/3Quuf/KsOT/YxWx/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/ilDE/2ETsP9pHrT/ayK1/2oftP9kF7L/XQuu/1UBqv9VAKr/VQCq/1UAqv9VAKr/ciy5//Ps+f/FqeL/Xg6v/1UAqv+bas3/+vf8/55szv9VAKr/VQCq/1UAqv9dDK7/qoDU/////////////v3+/9S/6f9nG7P/VQCq/6Bxz/+UXsn/VgKr/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/tI/a/18Qr/9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9nG7P/3czt//r3/P+cas3/VQCq/1UAqv+JTsT/9O75/+DR8P9fDq//VQCq/1UAqv9VAKr/VQCq/7KL2P/8+v3///////38/v+yi9j/Zxqy/6qA1P9YBaz/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/onPQ/6V40v9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/18Qr/+9nN7//Pr9/+jd9P9uJbb/VQCq/1UAqv96OLz/7+f3//Pt+f+FSML/VQCq/1UAqv9VAKr/VQCq/2MVsf/Ruuj////////////p3/T/f0C//1kGrP9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/ciu4/+jd9P91MLr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VgGq/7eT2//6+P3//////6+H1/9WAqv/VQCq/1UAqv9vJ7f/6+H1//39/v+qf9X/VwKr/1UAqv9VAKr/VQCq/1YBqv+YZcz/+PX8///////+/f7/fz+//1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/9O96f/MsuX/ayG1/1UAqv9VAKr/VQCq/1YCq/9mGrP/vZze////////////6+H1/18Pr/9VAKr/VQCq/1UAqv9oHbP/6d70///////JreT/Xw+v/1UAqv9VAKr/VQCq/1UAqv96OLz/7+f3///////9/f7/fTy+/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/4FCwP/x6fj/18Pr/5tpzf+AQL//gkPA/6Bw0P/XxOv//Pv+///////18fr/jlbH/1UAqv9VAKr/VQCq/1UAqv9nG7P/6N30///////f0O//Zxuz/1UAqv9VAKr/VQCq/1UAqv95Nrz/7+b3///////l2fL/aR60/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1oIrf+xitj//Pv+//r3/P/x6vj/8ev4//r4/f////////////38/v+4lNv/XAqt/1UAqv9VAKr/VQCq/1UAqv9uJbb/6+H1///////u5vf/bCK1/1UAqv9VAKr/VQCq/1UAqv+UX8r/+PT7//z6/f+rgdX/WQWs/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9hEbD/x6vj//v4/f///////////////////////Pr9/8205v9kFrH/VQCq/1UAqv9VAKr/VQCq/1UAqv+CRMH/8uv4///////07vn/biW2/1UAqv9VAKr/VQCq/2gdtP/Ru+j//fz+/8yz5v9iE7D/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/Xw6v/6R30v/fz+///Pr9//38/v/j1fH/qn/U/2IUsP9VAKr/VQCq/1UAqv9VAKr/VQCq/1gFrP+pftT//Pr9///////t4/b/ayK1/1UAqv9VAKr/cSu4/8er4//x6/j/tZDa/2QWsf9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1gEq/9nG7P/cy65/3Yxuv9+Pr7/ah+0/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/3Eruf/o3fT////////////Wwuv/ZBax/14Or/+ic9D/59vz/9fC6/+ER8H/Wwmt/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9XBKv/p3zU/6h90/95N7z/ah+0/2ccs/9rIbX/j1bH/+zj9v////////////z6/f+uhdb/iEzD/7GK2P+idND/dS+6/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VwOr/45Wxv/HrOP/4NHw/+HS8P/s4vX//fz+////////////+/r9/8Cg3/9oHLP/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1YBqv9hErD/dzO7/6d70//LsOX/28nt/9bC6v+5l9z/gUPA/18Pr/9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqvZVAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq9lUAqsZVAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCqxlYAqVxUAKr4VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9UAKr4VgCpXFUAqg9UAKmVVACq+FUAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1QAqvhUAKmVVQCqDwAAAABVAKoPVgCpXFUAqsZVAKr2VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr/VQCq/1UAqv9VAKr2VQCqxlYAqVxVAKoPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" />
+</head>
+
+<body>
+    <h1>Армянские числительные</h1>
+
+    <div class="settings">
+        <label for="rangeLower">Минимальное число:</label>
+        <input type="number" id="rangeLower" min="0" max="10000" value="0" title="Нижняя граница значений. Минимальное значение 0.">
+
+        <label for="rangeUpper">Максимальное число:</label>
+        <input type="number" id="rangeUpper" min="0" max="10000" value="10000" title="Верхняя граница значений. Максимальное значение 10000.">
+
+        <label for="switch">Армянский ⇔ Русский:</label>
+        <input type="checkbox" id="switch" title="При установленном флажке будут показываться числа на армянском, при снятом &mdash; на русском">
+    </div>
+
+    <div id="flashcardContainer"></div>
+
+    <script>
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function generateFlashcard() {
+            var rangeLower = parseInt(document.getElementById('rangeLower').value);
+            var rangeUpper = parseInt(document.getElementById('rangeUpper').value);
+            var isArmenianToRussian = document.getElementById('switch').checked;
+
+            var randomNumber = getRandomNumber(rangeLower, rangeUpper);
+            var frontText = isArmenianToRussian ? convertToArmenian(randomNumber) : convertToRussian(randomNumber);
+            var backText = isArmenianToRussian ? convertToRussian(randomNumber) : convertToArmenian(randomNumber);
+
+            var flashcardContainer = document.getElementById('flashcardContainer');
+            flashcardContainer.innerHTML = '';
+
+            var flashcard = document.createElement('div');
+            flashcard.classList.add('flashcard');
+            flashcard.innerHTML = '<div class="front">' + frontText + '</div><div class="back">' + backText + '</div>';
+            flashcard.addEventListener('click', function () {
+                flashcard.classList.toggle('show-back');
+                if (flashcard.innerText == frontText) {
+                    generateFlashcard();
+                }
+            });
+
+            flashcardContainer.appendChild(flashcard);
+        }
+
+        function convertToArmenian(number) {
+            var units = ['', 'մեկ', 'երկու', 'երեք', 'չորս', 'հինգ', 'վեց', 'յոթ', 'ութ', 'ինը'];
+            var tens = ['', 'տասն', 'քսան', 'երեսուն', 'քառասուն', 'հիսուն', 'վաթսուն', 'յոթանասուն', 'ութանասուն', 'իննսուն'];
+            var hundreds = ['', 'հարյուր', 'երկու հարյուր', 'երեք հարյուր', 'չորս հարյուր', 'հինգ հարյուր', 'վեց հարյուր', 'յոթ հարյուր', 'ութ հարյուր', 'ինը հարյուր'];
+            var thousands = ['', 'հազար', 'երկու հազար', 'երեք հազար', 'չորս հազար', 'հինգ հազար', 'վեց հազար', 'յոթ հազար', 'ութ հազար', 'ինը հազար'];
+
+            if (number === 0) {
+                return 'զրո';
+            }
+
+            var armenianNumeral = '';
+
+            if (number >= 1000) {
+                armenianNumeral += thousands[Math.floor(number / 1000)];
+                number %= 1000;
+            }
+
+            if (number >= 100) {
+                if (armenianNumeral !== '') {
+                    armenianNumeral += ' ';
+                }
+                armenianNumeral += hundreds[Math.floor(number / 100)];
+                number %= 100;
+            }
+
+            if (number >= 10) {
+                if (armenianNumeral !== '') {
+                    armenianNumeral += ' ';
+                }
+                armenianNumeral += tens[Math.floor(number / 10)];
+                number %= 10;
+            }
+
+            if (number > 0) {
+                if (armenianNumeral !== '') {
+                    armenianNumeral += ' ';
+                }
+                armenianNumeral += units[number];
+            }
+
+            return armenianNumeral;
+        }
+
+        function convertToRussian(number) {
+            var units = ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'];
+            var tens = ['', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'];
+            var hundreds = ['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
+            var thousands = ['', 'тысяча', 'две тысячи', 'три тысячи', 'четыре тысячи', 'пять тысяч', 'шесть тысяч', 'семь тысяч', 'восемь тысяч', 'девять тысяч'];
+
+            if (number === 0) {
+                return 'ноль';
+            }
+
+            var russianNumeral = '';
+
+            if (number >= 1000) {
+                russianNumeral += thousands[Math.floor(number / 1000)];
+                number %= 1000;
+            }
+
+            if (number >= 100) {
+                if (russianNumeral !== '') {
+                    russianNumeral += ' ';
+                }
+                russianNumeral += hundreds[Math.floor(number / 100)];
+                number %= 100;
+            }
+
+            if (number >= 10) {
+                if (russianNumeral !== '') {
+                    russianNumeral += ' ';
+                }
+                russianNumeral += tens[Math.floor(number / 10)];
+                number %= 10;
+            }
+
+            if (number > 0) {
+                if (russianNumeral !== '') {
+                    russianNumeral += ' ';
+                }
+                russianNumeral += units[number];
+            }
+            return russianNumeral;
+        }
+
+        document.getElementById('rangeLower').addEventListener('input', generateFlashcard);
+        document.getElementById('rangeUpper').addEventListener('input', generateFlashcard);
+        document.getElementById('switch').addEventListener('change', generateFlashcard);
+
+        // Generate initial flashcard
+        generateFlashcard();
+
+    </script>
+</body>
+
+</html>
