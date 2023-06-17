@@ -6,7 +6,26 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+        }
+
+        .container {
+            width: 300px;
+            margin: auto;
             text-align: center;
+        }
+
+        .settings {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 8px;
+        }
+
+        .settings label {
+            align-self: center;
+        }
+
+        input[type=number] {
+            text-align: right;
         }
 
         .flashcard {
@@ -52,142 +71,251 @@
 </head>
 
 <body>
-    <h1>Армянские числительные</h1>
+    <main>
+        <div class="container">
+            <h1>Армянские числительные</h1>
+            <div class="settings">
+                <label for="rangeLower">Минимальное число:</label>
+                <input type="number" id="rangeLower" min="0" max="9999" value="0" title="Нижняя граница значений.&#10;Минимальное значение 0.">
 
-    <div class="settings">
-        <label for="rangeLower">Минимальное число:</label>
-        <input type="number" id="rangeLower" min="0" max="10000" value="0" title="Нижняя граница значений. Минимальное значение 0.">
+                <label for="rangeUpper">Максимальное число:</label>
+                <input type="number" id="rangeUpper" min="0" max="9999" value="9999" title="Верхняя граница значений.&#10;Максимальное значение 9999.">
 
-        <label for="rangeUpper">Максимальное число:</label>
-        <input type="number" id="rangeUpper" min="0" max="10000" value="10000" title="Верхняя граница значений. Максимальное значение 10000.">
+                <label for="switch">Армянский ⇔ Русский:</label>
+                <input type="checkbox" id="switch" title="При установленном флажке на передней стороне карточки&#10;будут показываться числа на армянском, а на задней &mdash; на русском.&#10;При снятом флажке &mdash; наоборот.">
+            </div>
 
-        <label for="switch">Армянский ⇔ Русский:</label>
-        <input type="checkbox" id="switch" title="При установленном флажке будут показываться числа на армянском, при снятом &mdash; на русском">
-    </div>
-
-    <div id="flashcardContainer"></div>
+            <div id="flashcardContainer"></div>
+        </div>
+        <div class="instruction">
+            <h2>Как этим пользоваться</h2>
+            <p>
+                Это простое приложение предназначено для изучения армянских числительных русскоязычными
+                пользователями.<br>
+                При установленном флажке <strong>Армянский ⇔ Русский</strong> может пригодиться также армяноязычным
+                пользователям для изучения русских числительных.
+            </p>
+            <h3>Элементы интерфейса</h3>
+            <p>
+            <ul>
+                <li><strong>Минимальное число</strong>: минимальное значение, для которого выводится строковое
+                    представление.<br>
+                    Например, если хотите изучать числа больше <code>100</code>, то нужно установить
+                    <code>100</code>.<br>
+                    Минимально возможное значение <code>0</code>.
+                </li>
+                <li><strong>Максимальное число</strong>: максимальное значение, для которого выводится строковое
+                    представление.<br>
+                    Например, если хотите изучать числа меньше <code>1000</code>, то нужно установить
+                    <code>1000</code>.<br>
+                    Максимально возможное значение <code>9999</code>. Дальше смысла нет, там всё по аналогии, слова
+                    больше тысячи (миллионы, миллиарды и т.д.) на армянском можете изучить самостоятельно.
+                </li>
+                <li><strong>Армянский ⇔ Русский</strong>: при снятом флажке (по умолчанию) передняя сторона карточки на
+                    русском языке, задняя — на армянском; при установленном — наоборот.</li>
+            </ul>
+            </p>
+            <h3>Транскрипция</h3>
+            <p>
+                Транскрипция армянского языка на русский и русского на армянский выполнена по принципу звуковой
+                близости.<br>
+                Некоторые решения могут показаться сомнительными (например, транскрипция <code>ы</code> как
+                <code>ը</code>),
+                но вариантов лучше я не нашёл.<br>
+            </p>
+        </div>
+        <h2>Ссылки</h2>
+        <p>
+        <ul>
+            <li><a href="https://github.com/AlekseiAdamov/armenian-numerals">Страница проекта на GitHub</a></li>
+            <li><a href="https://alekseiadamov.github.io/armenian-numerals/">Страница приложения</a></li>
+            <li>Послушать произношение числительных на армянском языке можно <a
+                    href="https://www.lingohut.com/ru/v685870/%D1%83%D1%80%D0%BE%D0%BA%D0%B8-%D0%B0%D1%80%D0%BC%D1%8F%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE-%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0-%D1%87%D0%B8%D1%81%D0%BB%D0%B0-%D0%BE%D1%82-1-%D0%B4%D0%BE-10">здесь</a>
+                и в дальнейших уроках на сайте по ссылке.</li>
+        </ul>
+        </p>
+    </main>
 
     <script>
         function getRandomNumber(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
         }
 
-        function generateFlashcard() {
-            var rangeLower = parseInt(document.getElementById('rangeLower').value);
-            var rangeUpper = parseInt(document.getElementById('rangeUpper').value);
-            var isArmenianToRussian = document.getElementById('switch').checked;
+        function generateFlashCard() {
+            const rangeLower = parseInt(document.getElementById('rangeLower').value);
+            const rangeUpper = parseInt(document.getElementById('rangeUpper').value);
 
-            var randomNumber = getRandomNumber(rangeLower, rangeUpper);
-            var frontText = isArmenianToRussian ? convertToArmenian(randomNumber) : convertToRussian(randomNumber);
-            var backText = isArmenianToRussian ? convertToRussian(randomNumber) : convertToArmenian(randomNumber);
+            if (isNaN(rangeLower) || isNaN(rangeUpper)) {
+                return;
+            }
 
-            var flashcardContainer = document.getElementById('flashcardContainer');
+            const isArmenianToRussian = document.getElementById('switch').checked;
+
+            const randomNumber = getRandomNumber(rangeLower, rangeUpper);
+            const frontText = `${randomNumber}<br><br>${isArmenianToRussian ? armenianNumeral(randomNumber) : russianNumeral(randomNumber)}`;
+            const backText = isArmenianToRussian
+                ? `${russianNumeral(randomNumber)}<br><br>(${armenianTranscription(randomNumber)})`
+                : `${armenianNumeral(randomNumber)}<br><br>(${russianTranscription(randomNumber)})`;
+
+            const flashcardContainer = document.getElementById('flashcardContainer');
             flashcardContainer.innerHTML = '';
 
-            var flashcard = document.createElement('div');
+            const flashcard = document.createElement('div');
             flashcard.classList.add('flashcard');
-            flashcard.innerHTML = '<div class="front">' + frontText + '</div><div class="back">' + backText + '</div>';
+            flashcard.title = 'Нажмите на карточку, чтобы увидеть ответ на другом языке';
+            flashcard.innerHTML = `<div class="front">${frontText}</div><div class="back">${backText}</div>`;
             flashcard.addEventListener('click', function () {
                 flashcard.classList.toggle('show-back');
-                if (flashcard.innerText == frontText) {
-                    generateFlashcard();
+                isToggled = !isToggled;
+                if (isToggled) {
+                    generateFlashCard();
                 }
             });
 
             flashcardContainer.appendChild(flashcard);
         }
 
-        function convertToArmenian(number) {
-            var units = ['', 'մեկ', 'երկու', 'երեք', 'չորս', 'հինգ', 'վեց', 'յոթ', 'ութ', 'ինը'];
-            var tens = ['', 'տասն', 'քսան', 'երեսուն', 'քառասուն', 'հիսուն', 'վաթսուն', 'յոթանասուն', 'ութանասուն', 'իննսուն'];
-            var hundreds = ['', 'հարյուր', 'երկու հարյուր', 'երեք հարյուր', 'չորս հարյուր', 'հինգ հարյուր', 'վեց հարյուր', 'յոթ հարյուր', 'ութ հարյուր', 'ինը հարյուր'];
-            var thousands = ['', 'հազար', 'երկու հազար', 'երեք հազար', 'չորս հազար', 'հինգ հազար', 'վեց հազար', 'յոթ հազար', 'ութ հազար', 'ինը հազար'];
-
+        function convert(number, numerals) {
             if (number === 0) {
-                return 'զրո';
+                return numerals.zero;
             }
 
-            var armenianNumeral = '';
+            var numeral = '';
 
             if (number >= 1000) {
-                armenianNumeral += thousands[Math.floor(number / 1000)];
+                numeral += numerals.thousands[Math.floor(number / 1000)];
                 number %= 1000;
             }
 
             if (number >= 100) {
-                if (armenianNumeral !== '') {
-                    armenianNumeral += ' ';
+                if (numeral !== '') {
+                    numeral += ' ';
                 }
-                armenianNumeral += hundreds[Math.floor(number / 100)];
+                numeral += numerals.hundreds[Math.floor(number / 100)];
                 number %= 100;
             }
 
-            if (number >= 10) {
-                if (armenianNumeral !== '') {
-                    armenianNumeral += ' ';
+            if (number >= 20) {
+                if (numeral !== '') {
+                    numeral += ' ';
                 }
-                armenianNumeral += tens[Math.floor(number / 10)];
+                numeral += numerals.tens[Math.floor(number / 10)];
                 number %= 10;
             }
 
-            if (number > 0) {
-                if (armenianNumeral !== '') {
-                    armenianNumeral += ' ';
+            if (number >= 10 && number <= 19) {
+                if (numeral !== '') {
+                    numeral += ' ';
                 }
-                armenianNumeral += units[number];
-            }
-
-            return armenianNumeral;
-        }
-
-        function convertToRussian(number) {
-            var units = ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'];
-            var tens = ['', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'];
-            var hundreds = ['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'];
-            var thousands = ['', 'тысяча', 'две тысячи', 'три тысячи', 'четыре тысячи', 'пять тысяч', 'шесть тысяч', 'семь тысяч', 'восемь тысяч', 'девять тысяч'];
-
-            if (number === 0) {
-                return 'ноль';
-            }
-
-            var russianNumeral = '';
-
-            if (number >= 1000) {
-                russianNumeral += thousands[Math.floor(number / 1000)];
-                number %= 1000;
-            }
-
-            if (number >= 100) {
-                if (russianNumeral !== '') {
-                    russianNumeral += ' ';
-                }
-                russianNumeral += hundreds[Math.floor(number / 100)];
-                number %= 100;
-            }
-
-            if (number >= 10) {
-                if (russianNumeral !== '') {
-                    russianNumeral += ' ';
-                }
-                russianNumeral += tens[Math.floor(number / 10)];
-                number %= 10;
+                numeral += numerals.teens[number - 10];
+                return numeral;
             }
 
             if (number > 0) {
-                if (russianNumeral !== '') {
-                    russianNumeral += ' ';
+                if (numeral !== '') {
+                    numeral += ' ';
                 }
-                russianNumeral += units[number];
+                numeral += numerals.units[number];
             }
-            return russianNumeral;
+            return numeral;
         }
 
-        document.getElementById('rangeLower').addEventListener('input', generateFlashcard);
-        document.getElementById('rangeUpper').addEventListener('input', generateFlashcard);
-        document.getElementById('switch').addEventListener('change', generateFlashcard);
+        function armenianNumeral(number) {
+            const numerals = {
+                zero: 'զրո',
+                units: ['', 'մեկ', 'երկու', 'երեք', 'չորս', 'հինգ', 'վեց', 'յոթ', 'ութ', 'ինը'],
+                teens: ['տասը', 'տասնմեկ', 'տասներկու', 'տասներեք', 'տասնչորս', 'տասնհինգ', 'տասնվեց', 'տասնյոթ', 'տասնութ', 'տասնինը'],
+                tens: ['', '', 'քսան', 'երեսուն', 'քառասուն', 'հիսուն', 'վաթսուն', 'յոթանասուն', 'ութանասուն', 'իննսուն'],
+                hundreds: ['', 'հարյուր', 'երկու հարյուր', 'երեք հարյուր', 'չորս հարյուր', 'հինգ հարյուր', 'վեց հարյուր', 'յոթ հարյուր', 'ութ հարյուր', 'ինը հարյուր'],
+                thousands: ['', 'հազար', 'երկու հազար', 'երեք հազար', 'չորս հազար', 'հինգ հազար', 'վեց հազար', 'յոթ հազար', 'ութ հազար', 'ինը հազար']
+            };
+            return convert(number, numerals);
+        }
+
+        function russianNumeral(number) {
+            const numerals = {
+                zero: 'ноль',
+                units: ['', 'один', 'два', 'три', 'четыре', 'пять', 'шесть', 'семь', 'восемь', 'девять'],
+                teens: ['десять', 'одиннадцать', 'двенадцать', 'тринадцать', 'четырнадцать', 'пятнадцать', 'шестнадцать', 'семнадцать', 'восемнадцать', 'девятнадцать'],
+                tens: ['', '', 'двадцать', 'тридцать', 'сорок', 'пятьдесят', 'шестьдесят', 'семьдесят', 'восемьдесят', 'девяносто'],
+                hundreds: ['', 'сто', 'двести', 'триста', 'четыреста', 'пятьсот', 'шестьсот', 'семьсот', 'восемьсот', 'девятьсот'],
+                thousands: ['', 'тысяча', 'две тысячи', 'три тысячи', 'четыре тысячи', 'пять тысяч', 'шесть тысяч', 'семь тысяч', 'восемь тысяч', 'девять тысяч']
+            };
+            return convert(number, numerals);
+        }
+
+        function russianTranscription(number) {
+            const numerals = {
+                zero: 'дзэро',
+                units: ['', 'мек', 'йерку', 'йерек', 'чорс', 'хинг', 'вец', 'йот', 'ут', 'инэ'],
+                teens: ['тасэ', 'таснмек', 'таснерку', 'таснерек', 'таснчорс', 'таснхинг', 'таснвец', 'таснйот', 'таснут', 'таснинэ'],
+                tens: ['', '', 'ксан', 'йересун', 'карасун', 'хисун', 'ватсун', 'йотанасун', 'утсун', 'иннсун'],
+                hundreds: ['', 'харюр', 'йерку харюр', 'йерек харюр', 'чорс харюр', 'хинг харюр', 'вец харюр', 'йот харюр', 'ут харюр', 'инэ харюр'],
+                thousands: ['', 'хазар', 'йерку хазар', 'йерек хазар', 'чорс хазар', 'хинг хазар', 'вец хазар', 'йот хазар', 'ут хазар', 'инэ хазар']
+            };
+            return convert(number, numerals);
+        }
+
+        function armenianTranscription(number) {
+            const numerals = {
+                zero: 'նոլ',
+                units: ['', 'օդին', 'դվա', 'տրի', 'չետըրե', 'պյատ', 'շեստ', 'սեմ', 'վոսեմ', 'դեվյատ'],
+                teens: ['դեսյատ', 'օդիննադծատ', 'դվենադծատ', 'տրինադծատ', 'չետըռնադծատ', 'պյատնադծատ', 'շեստնադծատ', 'սեմնադծատ', 'վոսեմնադծատ', 'դեվյատնադծատ'],
+                tens: ['', '', 'դվադծատ', 'տրիդծատ', 'սոռոկ', 'պյատդեսյատ', 'շեստդեսյատ', 'սեմդեսյատ', 'վոսեմդեսյատ', 'դեվյանոստո'],
+                hundreds: ['', 'ստո', 'դվեստի', 'տրիստա', 'չետըրեստա', 'պյատսոտ', 'շեստսոտ', 'սեմսոտ', 'վոսեմսոտ', 'դեվյատսոտ'],
+                thousands: ['', 'տըսյաչա', 'դվե տըսյաչի', 'տրի տըսյաչի', 'չետըրե տըսյաչի', 'պյատ տըսյաչ', 'շեստ տըսյաչ', 'սեմ տըսյաչ', 'վոսեմ տըսյաչ', 'դեվյատ տըսյաչ']
+            };
+            return convert(number, numerals);
+        }
+
+        // See regenerateFlashCard.
+        let isToggled = true;
+
+        function regenerateFlashCard() {
+            // To prevent from generating a new card
+            // without showing the back side.
+            isToggled = true;
+            generateFlashCard();
+        };
+
+        document.getElementById('rangeLower').addEventListener('input', (event) => {
+            if (event.target.value === '') {
+                alert('Значение верхней границы не может быть пустым.\nЗначение будет установлено равным 0.')
+                event.target.value = 0;
+            }
+            // To prevent from inputing leading zeroes.
+            event.target.value = parseInt(event.target.value);
+            const rangeUpper = parseInt(document.getElementById('rangeUpper').value);
+            if (parseInt(event.target.value) > rangeUpper) {
+                alert(`Значение нижней границы не может быть больше значения верхней границы.\nЗначение будет установлено равным значению верхней границы ${rangeUpper}.`)
+                event.target.value = rangeUpper;
+            }
+            regenerateFlashCard();
+        });
+
+        document.getElementById('rangeUpper').addEventListener('input', (event) => {
+            if (event.target.value === '') {
+                alert('Значение верхней границы не может быть пустым.\nЗначение будет установлено равным 9999.')
+                event.target.value = 9999;
+            }
+            // To prevent from inputing leading zeroes.
+            event.target.value = parseInt(event.target.value);
+            if (parseInt(event.target.value) > 9999) {
+                alert('Значение верхней границы не может быть больше 9999.\nЗначение будет установлено равным 9999.')
+                event.target.value = 9999;
+            }
+            const rangeLower = parseInt(document.getElementById('rangeLower').value);
+            if (parseInt(event.target.value) < rangeLower) {
+                alert(`Значение верхней границы не может быть меньше значения нижней границы.\nЗначение будет установлено равным нижней границе ${rangeLower}.`)
+                event.target.value = rangeLower;
+            }
+            regenerateFlashCard();
+        });
+
+        document.getElementById('switch').addEventListener('change', regenerateFlashCard);
 
         // Generate initial flashcard
-        generateFlashcard();
+        generateFlashCard();
 
     </script>
 </body>
