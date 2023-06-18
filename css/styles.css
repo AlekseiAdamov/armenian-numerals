@@ -1,0 +1,49 @@
+.flashcard {
+    width: 300px;
+    height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: center;
+}
+
+.flashcard:hover {
+    transform: scale(1.10);
+}
+
+.flashcard .front {
+    font-size: 24px;
+}
+
+.flashcard .back {
+    display: none;
+    font-size: 18px;
+}
+
+.flashcard.show-back .front {
+    display: none;
+}
+
+.flashcard.show-back .back {
+    display: block;
+}
+
+label,
+input {
+    display: inline-block;
+}
+
+input[type=number] {
+    text-align: right;
+}
+
+.settings {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
