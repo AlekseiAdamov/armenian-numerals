@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 "հիսուն",
                 "վաթսուն",
                 "յոթանասուն",
-                "ութանասուն",
+                "ութսուն",
                 "իննսուն"
             ],
             "thousands": [
